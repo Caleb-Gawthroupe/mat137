@@ -1,0 +1,433 @@
+\documentclass[11pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage{mdframed}
+\usepackage{amsthm}
+\renewcommand{\qedsymbol}{\blacksquare}
+
+
+\usepackage{xparse}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tcolorbox}
+\noprintanswers
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage[all]{xy}
+\usepackage{pgfplots}
+%\pgfplotsset{compat=1.6}
+\pgfplotsset{soldot/.style={color=blue,only marks,mark=*}} \pgfplotsset{holdot/.style={color=blue,fill=white,only marks,mark=*}}
+
+\addtolength{\textheight}{3cm}
+\addtolength{\topmargin}{-1cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-1.5cm}
+\addtolength{\evensidemargin}{-1.5cm}
+\setlength\parindent{0pt}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vv}{\vspace{.2cm}}
+\newcommand{\answer}[1]{\textcolor{blue}{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\link}[2]{\href{#1}{\textcolor{blue}{#2}}}
+\pagestyle{empty}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+
+%============================================
+%Special definitions for this document only
+%============================================
+
+\newcommand{\M}[2]{\Omega^{\, #2}_{\, #1}}
+
+\DeclareMathOperator{\Walt}{Walt}
+\DeclareMathOperator{\Tor}{Tor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+{\large
+	\begin{center}
+		{\bf MAT 137Y: Calculus with proofs}\\
+		{\bf Assignment 1} \\
+		{\bf Due on Thursday,  Sept 25 by 11:59pm via GradeScope}
+	\end{center}
+}
+
+
+\section*{Instructions}
+
+
+This problem set is based on Unit 1: Logic, sets, and notations. Please read the \href{https://q.utoronto.ca/courses/401072/pages/policies-and-faq?module_item_id=7019788#problemsets}{Problem Set FAQ} for details on submission policies, collaboration rules, and general instructions. Remember you can submit in pairs or individually. 
+
+\begin{itemize}
+	\item \textbf{Submissions are only accepted by \href{https://www.gradescope.ca}{Gradescope}}. Do not send anything by email.  Late submissions are not accepted under any circumstance. Remember you can resubmit anytime before the deadline. 
+	\item \textbf{Submit your polished solutions using only this template PDF.} You will submit a single PDF with your full written solutions. If your solution is not written using this template PDF (scanned print or digital) then you will receive zero. Do not submit rough work. Organize your work neatly in the space provided.  
+	\item \textbf{Show your work and justify your steps} on every question, unless otherwise indicated. Put your final answer in the box provided, if necessary. 
+\end{itemize}
+
+We recommend you write draft solutions on separate pages and afterwards write your polished solutions here. You must fill out and sign the academic integrity statement below; otherwise, you will receive zero. 
+
+\section*{Academic integrity statement}
+
+%%% Student information
+
+% Student 1
+\fbox{
+\begin{minipage}{\textwidth}
+{
+\vspace{0.2in}
+
+\makebox[\textwidth]{\sffamily Full Name:\enspace\hrulefill}
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{\sffamily Student number:\enspace\hrulefill}
+
+\vspace{0.1in}
+}
+\end{minipage}
+}
+
+\vspace*{0.1in}
+
+% Student 2
+\fbox{
+\begin{minipage}{\textwidth}
+{
+\vspace{0.2in}
+
+\makebox[\textwidth]{\sffamily Full Name:\enspace\hrulefill}
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{\sffamily Student number:\enspace\hrulefill}
+
+\vspace{0.1in}
+}
+\end{minipage}
+}
+
+I confirm that:
+\begin{itemize} 
+	\item I have read and followed the policies described in the \href{https://q.utoronto.ca/courses/401072/pages/policies-and-faq?module_item_id=7019788#problemsets}{Problem Set FAQ}. 
+	\item I have read and understand the rules for collaboration on problem sets described in the Academic Integrity subsection of the syllabus. I have not violated these rules while writing this problem set. 
+	\item I understand the consequences of violating the University's academic integrity policies as outlined in the \href{http://www.governingcouncil.utoronto.ca/policies/behaveac.htm}{Code of Behaviour on Academic Matters}. I have not violated them while writing this assessment.
+\end{itemize}
+By signing this document, I agree that the statements above are true. 
+
+% You should sign this PDF after compiling. Do not write your signature using LaTeX.
+\vspace{0.2in}
+{\large 
+\makebox[\textwidth]{\sffamily Signatures: 1)\enspace\hrulefill} 
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{\sffamily \hspace*{22mm} 2)\enspace\hrulefill} 
+
+}
+\newpage
+\begin{enumerate}
+\item  Consider the following statement: \\
+``Every (strictly) increasing function $f$ with domain $\R$ satisfies: if $x_1 $ and $x_2$ are real numbers such that $f(x_1)>0$ and $f$ is one-to-one on the interval $(x_1-1, x_1+1)$ and $0<x_2-x_1<1/2$, then \\
+$[f(x_1+1/2)]^2> f(x_2)>0$. "
+
+
+
+
+
+ \begin{enumerate}
+ 	
+	\item
+Negate this statement without using ``no", ``not", ``false", etc.
+ %%% Your work goes here!
+\\
+\\
+There exists a strictly increasing function $f$ with a domain $\R$, such that $x_1$ and $x_2$ are real numbers, $f(x_1) > 0$, $f$ is one-to-one on the interval $(x_1-1,x_1+1)$, $0 < x_2 - x_1 < {1\over2}$ and either $f(x_2) \le  0$ or $[f(x_1)+{1\over2})]^2 \le f(x_2)$ 
+ 
+	\vfill
+	\item 
+	Is this statement true or false? If it is true,  prove it.  If it is false,  provide a counterexample and a justification of how the counterexample shows the statement is false.
+	\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is False  %Delete True or False according to your answer and delete two \choice on this line.
+\end{oneparcheckboxes}
+\end{mdframed}
+ %%% Your work goes here!
+\vspace{1 cm}
+
+\textit{Proof.} 
+\\
+\text{WTS:} There exists a strictly increasing function $f$ with a domain $\R$, such that $x_1$ and $x_2$ are real numbers, $f(x_1) > 0$, $f$ is one-to-one on the interval $(x_1-1,x_1+1)$, $0 < x_2 - x_1 < {1\over2}$ and either $f(x_2) \le  0$ or $[f(x_1)+{1\over2})]^2 \le f(x_2)$ \\
+\\
+Let $f(x)=0.1x$
+
+Let $x_1 =4, x_2 = 4.4$
+\\ Clearly by substituting in the values we get: \\
+$[f(x_1+{1\over2})]^2=0.2025 \le 0.44 = f(x_2)$
+
+And we can check that we have satisfied the requirements: 
+
+$x_1,x_2 \in \R \checkmark$ 
+
+$f(x_1)=0.45>0 \checkmark$
+
+$f(x)$ is one-to-one on the interval $(x_1-1,x_1+1) = (3, 5) \checkmark$
+
+$0<x_2-x_1=0.4 <{1\over2} \checkmark$
+
+$f(x)=0.1x$ is strictly increasing $\checkmark$
+
+As desired. $\blacksquare$
+
+ \vfill\vfill \vfill\newpage
+\item Now if we change this statement to be
+``Every one-to-one  function $f$ with domain $\R$ satisfies: if $x_1 $ and $x_2$ are real numbers such that $f(x_1)>0$ and $f$ is (strictly) increasing on the interval $(x_1-1, x_1+1)$ and $0<x_2-x_1<1/2$, then 
+$2f(x_1+1/2)> f(x_2)>f(x_1-1/2)$. "
+Is this statement true or false? If it is true,  prove it.  If it is false,  provide a counterexample and a justification of how the counterexample shows the statement is false.
+	\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is True
+\end{oneparcheckboxes}
+\end{mdframed}
+ \end{enumerate}
+ %%% Your work goes here!
+\vspace{1 cm}
+\textit{Proof.} 
+\vspace{0.5 cm}
+
+WTS: Every one-to-one  function $f$ with domain $\R$ satisfies: if $x_1 $ and $x_2$ are real numbers such that $f(x_1)>0$ and $f$ is (strictly) increasing on the interval $(x_1-1, x_1+1)$ and $0<x_2-x_1<1/2$, then 
+$2f(x_1+1/2)> f(x_2)>f(x_1-1/2)$.
+\vspace{0.25 cm}
+
+Let $f$ be some arbitrary, one-to-one, strictly increasing function with domain $\R$. \\
+Assume $x_1, x_2$ are reals numbers such that $f(x_1) > 0$ and $0 < x_2-x_1<{1 \over 2}$. 
+\vspace{0.25 cm}
+
+If $0 < x_2 - x_1 < {1 \over 2}$ then we can add $x_1$ to both sides to get: \\
+$x_1 < x_2 < x_1 + {1 \over 2}$
+\vspace{0.25 cm}
+
+Since $f$ is increasing, \\
+$x_2<x_1+{1\over2}$ means that $f(x_2)<f(x_1+{1\over2})$ 
+\vspace{0.25 cm}
+
+And since $f(x_1) > 0$ we can write this as: \\
+$ 0<f(x_1)<f(x_2)<f(x_1+{1\over2}) $ 
+\vspace{0.25 cm}
+
+And if $f(x_1) < f(x_2)$, since $f$ is strictly increasing:\\
+$f(x_1-{1\over2}) < f(x_2)$
+\vspace{0.25 cm}
+
+Finally, since $f(x_1+{1\over2}) > 0$ \\
+then, $2f(x_1+{1\over2}) > f(x_1+{1\over2})$, and putting all the inequalities together gives: \\
+$2f(x_1+1/2)> f(x_2)>f(x_1-1/2)$ as required. $\blacksquare$
+\newpage
+
+\item  In this problem, assume all functions have domain $\mathbb{R}$. I define two new concepts. 
+
+\begin{enumerate}
+\item [(i)]We say that function $f$ is \textit{happier} than function $g$ if \\
+$$\forall x \in \R,  \exists y\in \R \textit{ s.t. } [ x < y \textit{ AND  } f(y)<g^2(y) ].$$ 
+  
+ 
+\item[(ii)]  We say that function $f$ is \textit{slower} than function $g$ if \\
+  $$\exists x \in \R \textit{ s.t. } [ \forall y \in \R,  x<y \implies f(y)<g^2(y) ].$$ 
+
+\end{enumerate}
+
+	\begin{enumerate}
+	\item  Write down the following definitions.\\
+	We say that function $f$ is NOT \textit{happier} than function $g$ if
+	\begin{tcolorbox}[colback=white]
+					\textbf{Final answer}
+					\vspace*{15mm} 
+				$\exists x\in \R \ s.t. [\ \forall y \in R, \ x \ge y \ OR \ f(y) \ge g^2(y)]$
+					
+			
+			\end{tcolorbox}
+ We say that function $f$ is NOT \textit{slower} than function $g$ if
+ \begin{tcolorbox}[colback=white]
+					\textbf{Final answer}
+					\vspace*{15mm} 
+					$\forall x \in \R, \exists y \in \R \ s.t. \ [x < y  \ AND \ f(y) \ge (g^2(y)]$
+			
+			\end{tcolorbox}
+		
+			Below are four claims.Which ones are true and which ones are false? If a claim is true,  prove it.  If a claim is false,  provide a counterexample and a justification of how the counterexample shows the claim is false. Hint: you may start this question by drawing pictures.
+			\item There is no function $f$ slower than itself.
+			\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+\end{oneparcheckboxes}
+\end{mdframed}
+ %%% Your work goes here!
+\vfill\newpage
+			\item For any function $f$,  $f$ is happier than itself.  
+			\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+\end{oneparcheckboxes}
+\end{mdframed}
+ %%% Your work goes here!
+\vfill
+ \item If $f$ and $g$ are any two functions and $f$ is slower than $g$,  then $f$ is happier than $g$. \\
+
+\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+\end{oneparcheckboxes}
+\end{mdframed}
+%%% Your work goes here!
+\vfill\vfill\newpage
+			\item If $f$ and $g$ are any two functions and $f$ is happier than $g$,  then $f$ is slower than $g$.  \\ 
+\begin{mdframed}
+ \begin{oneparcheckboxes} 
+This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+\end{oneparcheckboxes}
+\end{mdframed}
+ %%% Your work goes here!
+\vfill\vfill
+\newpage
+
+			
+
+
+\newpage
+		
+		\end{enumerate}
+
+
+
+
+			
+	
+
+
+\newpage
+\item 
+\begin{enumerate}
+\item Lindit chocolates come in bags of 6,9,and 20 pieces. Prove that for any integer $n>43$, it is possible to buy exactly $n$ pieces of chocolates with a combination of these bags. \\
+\emph{Hint: you may need to use math induction method to prove this problem. }
+\vspace{0.25 cm}
+
+%%% Your work goes here!
+\textit{Proof. (By Strong Induction)} \\
+WTS: for any integer $n > 43$, it is possible to buy exactly $n$ pieces of chocolates with a combination of bags of size 6, 9, and 20 pieces.
+\addvspace{0 pt}
+Base Cases:
+\addvspace{0 pt}
+
+44 chocolates = $20(1) + 9(0) + 6(4) = 44$ \\
+45 chocolates = $20(0) + 9(5) + 6(0) = 45$ \\
+46 chocolates = $20(2) + 9(0) + 6(1) = 46$ \\
+47 chocolates = $20(1) + 9(1) +6 (3) = 47$ \\
+48 chocolates = $20(0) + 9(0) + 6(8) = 48$ \\
+49 chocolates = $20(2) + 9(1) + 6(0) = 49$ \\
+
+\addvspace{2 pt}
+Induction Step: \\
+Let $n \in \N, n \ge 50$ \\
+WTS: that it is possible to make $n$ candy with bags of 6, 9, 20. 
+\\
+\addvspace{1 pt}
+
+By induction hypothesis, we can assume that for all $k \in \N $ such that, $43 < k < n$, it is possible to get exactly $k$ candy using bags of 6, 9, 20.
+\addvspace{1 pt}
+
+Take $\beta = n-6$ \\
+Since $n \ge 50$, then $n-6 > 43$, or to say $\beta > 43$. \\
+Because of this, we can assume we can make $\beta$ chocolate with $20a_1 + 9b_1 + 6c_1$ where $a_1, b_1, c_1$ are in $\Z_{\ge 0}$ representing the number of bags of each size used. \\
+Then, we can make $n$ chocolates by simply adding a bag of 6. \\
+We can express this as $n = 20a_2 + 9b_2 + 6c_2$ where $a_2 = a_1, b_2 = b_1, c_2 = c_1 + 1$. \\
+\addvspace{2 pt}
+Thus, we can make $n$ candy with bags of 6, 9, 20, for any integer $n > 43$ as needed. $\blacksquare$
+
+
+
+
+\newpage
+ \item If we also allow 4-pieces bags, then what is the largest integer $n$ such that it's impossible to buy exactly $n$ pieces of chocolates?
+%%% Your work goes here!
+\vspace{0.25 cm}
+
+\textit{Proof.} \\
+\addvspace{1 pt}
+WTS: $11$ is the largest integer $n$ such that it's impossible to buy exactly $n$ pieces of chocolate with bags of size $4, 6, 9, 20$. 
+\addvspace{3 pt}
+First, we need to show that it is impossible to make exactly 11 pieces.
+\addvspace{2 pt}
+Since 11 is an odd integer, we would need to have at least one odd integer added to the sum, since the sum of all even integers would be even. \\
+9 is the only odd integer, and $9 +4 > 11$, and $4 < 6 < 9 < 20$, so no combination of $9$ and $4, 6, 20$ will sum to 11. \\
+Thus, it is impossible to make exactly 11 pieces.
+\addvspace{3 pt}
+Next, we need to show that it is possible to make $n$ pieces of chocolate for every $n > 11$. We will do this again by strong induction.
+\addvspace{2 pt}
+Base Cases:
+\addvspace{0 pt}
+
+12 chocolates = $20(0) + 9(0) + 6(2) + 4(0) = 12$ \\
+13 chocolates = $20(0) + 9(1) + 6(0) + 4(0) = 13$ \\
+14 chocolates = $20(0) + 9(0) + 6(1) + 4(2) = 14$ \\
+15 chocolates = $20(0) + 9(1) +6 (1) + 4(0) = 15$ \\
+
+\addvspace{2 pt}
+Induction Step: \\
+WTS: that it is possible to make $n$ candy with bags of 4, 6, 9, 20. \\
+Let $n \in \N, n \ge 16$
+\addvspace{1 pt}
+By induction hypothesis, we can assume that for all $k \in \N $ such that, $11 < k < n$, it is possible to get exactly $k$ candy using bags of 4, 6, 9, 20.
+\addvspace{1 pt}
+
+Take $\beta = n-4$ \\
+Since $n \ge 16$, then $n-6 > 11$, or to say $\beta > 11$. \\
+Because of this, we can assume we can make $\beta$ chocolate with $20a_1 + 9b_1 + 6c_1 + 4d_1$ where $a_1, b_1, c_1, d_1$ are in $\Z_{\ge 0}$ representing the number of bags of each size used. \\
+Then, we can make $n$ chocolates by simply adding a bag of 4. \\
+We can express this as $n = 20a_2 + 9b_2 + 6c_2, +4c_2$ where $a_2 = a_1, b_2 = b_1, c_2 = c_1, d_2 = c_1 + 1$. \\
+\addvspace{2 pt}
+Since we have shown that with bags of size 4, 6, 9, and 20, we can't make exactly 11 pieces of chocolate, and that we can make any $n > 11$ pieces of chocolate, 11 is the largest integer where it's impossible to make exactly $n$ pieces of chocolate with bags of size 4, 6, 9, and 20 as required. $\blacksquare$
+
+
+\end{enumerate} 
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
+
+
