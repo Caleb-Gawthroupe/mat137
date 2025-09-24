@@ -289,9 +289,19 @@ $$\forall x \in \R,  \exists y\in \R \textit{ s.t. } [ x < y \textit{ AND  } f(y
 			\item There is no function $f$ slower than itself.
 			\begin{mdframed}
  \begin{oneparcheckboxes} 
-This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+This statement is False  %Delete True or False according to your answer and delete two \choice on this line.
 \end{oneparcheckboxes}
 \end{mdframed}
+WTS: There exists a function $f$ where $$\exists x \in \R \textit{ s.t. } [ \forall y \in \R,  x<y \implies f(y)<f^2(y) ].$$ 
+\addvspace{2 pt}
+
+Take the function $f(x)=x$. \\
+Cleary, $f^2(x) = x^2$. \\
+Let $x = 1$ \\
+Let $y \in \R$,\\
+Assume that $x < y$ \\
+Since $x^2 > x$ for all $x > 1$, and since $y > x > 1$, $f(x)$ is a counterexample of a function slower than itself as needed.
+
  %%% Your work goes here!
 \vfill\newpage
 			\item For any function $f$,  $f$ is happier than itself.  
@@ -301,6 +311,26 @@ This statement is  \choice True  \choice False  %Delete True or False according 
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
+
+WTS: There is some function $f$ where $f$ is not happier than itself, or to say: $\exists x\in \R \ s.t. [\ \forall y \in R, \ x \ge y \ OR \ f(y) \ge f^2(y)]$ \\
+
+\addvspace{0 pt}
+
+Take the function $f$ to be $f(x) = {1 \over x}$ as a counterexample. \\
+Let $x = 1$. \\
+Let $y \in \R$. \\
+There are two cases: either $x \ge y$ or $x < y$.
+\addvspace{0.25 cm}
+In the case that $x \ge y$, then the statement $\exists x\in \R $ s.t. $[\ \forall y \in R, \ x \ge y \ OR \ f(y) \ge f^2(y)]$ is true.
+\addvspace{0.25 cm}
+
+In the case that $x < y$, or to say $1 = x < y$, then $y < y^2$. \\
+Since $y < y^2$, then ${1 \over y} \ge {1 \over y^2}$ as it is the reciprocal inequality. \\
+Thus, if $f(x) = {1 \over x}$, meaning that $f^2(x) = [{1 \over x}]^2 = {1 \over x^2}$, then for all $1 = x < y$, $f(y) \ge f^2(y)$.
+\addvspace{0.25 cm}
+As one of these two cases must always be true, and in both cases the initial statement showing that a function $f$ is not happier than itself is true, the counterexample shows that a function can be not happier than itself. 
+
+ 
 \vfill
  \item If $f$ and $g$ are any two functions and $f$ is slower than $g$,  then $f$ is happier than $g$. \\
 
