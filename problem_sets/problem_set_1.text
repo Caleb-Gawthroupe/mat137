@@ -331,8 +331,9 @@ Thus, if $f(x) = {1 \over x}$, meaning that $f^2(x) = [{1 \over x}]^2 = {1 \over
 As one of these two cases must always be true, and in both cases the initial statement showing that a function $f$ is not happier than itself is true, the counterexample shows that a function can be not happier than itself. 
 
  
-\vfill
- \item If $f$ and $g$ are any two functions and $f$ is slower than $g$,  then $f$ is happier than $g$. \\
+\vfill\newpage
+
+\item If $f$ and $g$ are any two functions and $f$ is slower than $g$,  then $f$ is happier than $g$. \\
 
 \begin{mdframed}
  \begin{oneparcheckboxes} 
@@ -380,11 +381,61 @@ In both cases, $x < y$ and $f(y) < g^2(y)$
 			\item If $f$ and $g$ are any two functions and $f$ is happier than $g$,  then $f$ is slower than $g$.  \\ 
 \begin{mdframed}
  \begin{oneparcheckboxes} 
-This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+This statement is False  %Delete True or False according to your answer and delete two \choice on this line.
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
- 
+WTS: Given any two function $f$ and $g$, $f$ is happier than $g$, and $f$ is not slower than $g$. \\
+\addvspace{2 pt}
+This can be expressed by the statement: \\
+$\forall x \in \R, \exists y_1\in \R$ s.t. $[x < y_1 \ \text{AND} \ f(y_1) < g^2(y_1)]$ and $\exists y_2 \in \R$ s.t $[x < y_2 \ \text{AND} \ f(y_2) \ge g^2(y_2)]$
+\\
+\addvspace{0 pt}
+
+
+Take the following counterexample: \\
+Let $f(x) = \sin(x)$ \\
+Let $ g(x) = x\sin(x)$  \\
+Let $x \in \R$ \\
+Let $k \in \Z, x < k$ and $1 < k$ \\
+\addvspace{0 pt} 
+
+We can show that $f$ is happier than $g$: \\
+\addvspace{0 pt}
+
+Take $y_1 = |{4k \pi + \pi \over 2}|$ \\
+
+For any $x > 1$, then $1 < 1 \cdot 1 \cdot x^2$. And at any $y_1$, $\sin(y_1) = 1$ \\
+Thus, the inequality $\sin(y_1) < [\sin(y_1)][\sin(y_1)](y_1^2)$ as this is the same as $1 < 1 \cdot 1 \cdot y_1^2$ \\
+We can rewrite this as $\sin(y_1) < y_1^2 \sin^2(y_1)$ which is precisely $f(y_1) < g^2(y_1)$ \\
+Since $x < k$, then $x < |{4k \pi + \pi \over 2}| = y_1$. \\
+Thus, $x < y_1$ and $f(y_1) < g^2(y_1)$. \\
+
+\addvspace{1 pt}
+The only case remaining, is when $x \le 1$. \\
+In this case, take $y_3 = {5\pi\over2}$ \\
+Then, $f(y_3) = 1$ and $g^2(y_3) \approx 61.685$. \\
+And then, $x < y_3$ and $f(y_3) < g^2(y_3)$. \\
+
+\addvspace{0 pt}
+
+Thus, $f$ is happier than $g$ as needed. \\
+
+
+\addvspace{2 pt}
+Then, we can show that $f$ is not slower than $g$ as follows: \\
+
+Take $y_2 = | k \pi |$ \\
+
+Given the nature of a $\sin$ function, $\sin(k\pi) = 0$ for all $k \in \Z$. \\
+Because of this, at $k\pi$, $\sin(y_2) = y_2\sin(y_2) = 0$, and if $x\sin(y_2) = 0 $ then $[x\sin(y_2)]^2 = 0$. \\
+This can also be written as $f(y_2) = g^2(y_2)$. \\
+And since $x < k$, than $x < |k \pi | = y_2$, \\
+\addvspace{1 pt}
+Thus $x < y_2$ and $f(y_2) \ge g^2(y_2)$, or to say $f$ is not slower $g$ as needed. \\
+\addvspace{2 pt}
+Thus, the counterexample has shown that given two functions, $f$ and $g$, $f$ is happier than $g$ and $f$ is not slower than $g$.
+
 \vfill\vfill
 \newpage
 
