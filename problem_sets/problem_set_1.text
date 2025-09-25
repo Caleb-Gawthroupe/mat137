@@ -336,10 +336,46 @@ As one of these two cases must always be true, and in both cases the initial sta
 
 \begin{mdframed}
  \begin{oneparcheckboxes} 
-This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+This statement is True  %Delete True or False according to your answer and delete two \choice on this line.
 \end{oneparcheckboxes}
 \end{mdframed}
 %%% Your work goes here!
+\textit{Proof.}
+\addvspace{2 pt}
+
+WTS: For two functions, $f$ and $g$, if $f$ is slower than $g$, then $f$ is happier than $g$.\\
+Using the definitions above, we can express this as: \\
+$ \ \exists x \in \R \textit{ s.t. } [ \forall y \in \R,  x<y \implies f(y)<g^2(y) ] \implies \forall x \in \R,  \exists y\in \R \ s.t. \ [x < y \ AND \ f(y) < g^2(y)]$ \\
+\addvspace{2 pt}
+
+Let $f$, $g$ be any two functions. \\
+
+Since $f$ is slower than $g$, we know that there exists some $x_0 \in \R $ such for any $y \in \R$,  $y >x_0 \implies f(y) < g^2(y)$.\\
+\addvspace{2 pt}
+
+Let $x, x_0 \in \R$, \\
+Take $y = \max \{x_0 + 1, x + 1\}$ \\
+
+\addvspace{2 pt}
+There are now two cases, either $x < x_0$ or $x \ge x_0$ \\
+\addvspace{1 pt}
+Case 1: $x < x_0$ \\
+Since $x < x_0$, then $x + 1 < x_0 + 1$ so $y = x_0 + 1$ \\
+Thus, $x < x_0 < y$, so $x < y$, \\
+And by assumption, since $y > x_0$, then $f(y) < g^2(y)$ as needed. \\
+\addvspace{1 pt}
+
+Case 2: $ x \ge x_0$ \\
+Since $x \ge x_0$, then $x + 1 \ge x_0 +1$, so $y = x + 1$.
+Thus, $x_0 \le x < y$.
+By assumption, since $x_0 < y$, then $f(y) < g^2(y)$ as needed. \\
+\addvspace{1 pt}
+
+In both cases, $x < y$ and $f(y) < g^2(y)$
+ 
+
+
+
 \vfill\vfill\newpage
 			\item If $f$ and $g$ are any two functions and $f$ is happier than $g$,  then $f$ is slower than $g$.  \\ 
 \begin{mdframed}
@@ -348,6 +384,7 @@ This statement is  \choice True  \choice False  %Delete True or False according 
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
+ 
 \vfill\vfill
 \newpage
 
