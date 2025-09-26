@@ -184,10 +184,10 @@ This statement is False  %Delete True or False according to your answer and dele
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
-\vspace{1 cm}
 
-\textit{Proof.} 
+\textit{Proof by counterexample.} 
 \\
+
 \text{WTS:} There exists a strictly increasing function $f$ with a domain $\R$, such that $x_1$ and $x_2$ are real numbers, $f(x_1) > 0$, $f$ is one-to-one on the interval $(x_1-1,x_1+1)$, $0 < x_2 - x_1 < {1\over2}$ and either $f(x_2) \le  0$ or $[f(x_1)+{1\over2})]^2 \le f(x_2)$ \\
 \\
 Let $f(x)=0.1x$
@@ -292,6 +292,8 @@ $$\forall x \in \R,  \exists y\in \R \textit{ s.t. } [ x < y \textit{ AND  } f(y
 This statement is False  %Delete True or False according to your answer and delete two \choice on this line.
 \end{oneparcheckboxes}
 \end{mdframed}
+\textit{Proof by counterexample. } \\
+
 WTS: There exists a function $f$ where $$\exists x \in \R \textit{ s.t. } [ \forall y \in \R,  x<y \implies f(y)<f^2(y) ].$$ 
 \addvspace{2 pt}
 
@@ -300,17 +302,18 @@ Cleary, $f^2(x) = x^2$. \\
 Let $x = 1$ \\
 Let $y \in \R$,\\
 Assume that $x < y$ \\
-Since $x^2 > x$ for all $x > 1$, and since $y > x > 1$, $f(x)$ is a counterexample of a function slower than itself as needed.
+Since $x^2 > x$ for all $x > 1$, and since $y > x > 1$, $f(x)$ is a counterexample of a function slower than itself as needed. $\blacksquare$
 
  %%% Your work goes here!
 \vfill\newpage
 			\item For any function $f$,  $f$ is happier than itself.  
 			\begin{mdframed}
  \begin{oneparcheckboxes} 
-This statement is  \choice True  \choice False  %Delete True or False according to your answer and delete two \choice on this line.
+This statement is False  %Delete True or False according to your answer and delete two \choice on this line.
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
+\textit{Proof by counterexample. } \\
 
 WTS: There is some function $f$ where $f$ is not happier than itself, or to say: $\exists x\in \R \ s.t. [\ \forall y \in R, \ x \ge y \ OR \ f(y) \ge f^2(y)]$ \\
 
@@ -328,7 +331,7 @@ In the case that $x < y$, or to say $1 = x < y$, then $y < y^2$. \\
 Since $y < y^2$, then ${1 \over y} \ge {1 \over y^2}$ as it is the reciprocal inequality. \\
 Thus, if $f(x) = {1 \over x}$, meaning that $f^2(x) = [{1 \over x}]^2 = {1 \over x^2}$, then for all $1 = x < y$, $f(y) \ge f^2(y)$.
 \addvspace{0.25 cm}
-As one of these two cases must always be true, and in both cases the initial statement showing that a function $f$ is not happier than itself is true, the counterexample shows that a function can be not happier than itself. 
+As one of these two cases must always be true, and in both cases the initial statement showing that a function $f$ is not happier than itself is true, the counterexample shows that a function can be not happier than itself. $\blacksquare$
 
  
 \vfill\newpage
@@ -372,7 +375,7 @@ Thus, $x_0 \le x < y$.
 By assumption, since $x_0 < y$, then $f(y) < g^2(y)$ as needed. \\
 \addvspace{1 pt}
 
-In both cases, $x < y$ and $f(y) < g^2(y)$
+In both cases, $x < y$ and $f(y) < g^2(y)$ as needed. $\blacksquare$ 
  
 
 
@@ -385,8 +388,10 @@ This statement is False  %Delete True or False according to your answer and dele
 \end{oneparcheckboxes}
 \end{mdframed}
  %%% Your work goes here!
+\textit{Proof by counterexample. } \\
+
+
 WTS: Given any two function $f$ and $g$, $f$ is happier than $g$, and $f$ is not slower than $g$. \\
-\addvspace{2 pt}
 This can be expressed by the statement: \\
 $\forall x \in \R, \exists y_1\in \R$ s.t. $[x < y_1 \ \text{AND} \ f(y_1) < g^2(y_1)]$ and $\exists y_2 \in \R$ s.t $[x < y_2 \ \text{AND} \ f(y_2) \ge g^2(y_2)]$
 \\
@@ -434,7 +439,7 @@ And since $x < k$, than $x < |k \pi | = y_2$, \\
 \addvspace{1 pt}
 Thus $x < y_2$ and $f(y_2) \ge g^2(y_2)$, or to say $f$ is not slower $g$ as needed. \\
 \addvspace{2 pt}
-Thus, the counterexample has shown that given two functions, $f$ and $g$, $f$ is happier than $g$ and $f$ is not slower than $g$.
+Thus, the counterexample has shown that given two functions, $f$ and $g$, $f$ is happier than $g$ and $f$ is not slower than $g$. $\blacksquare$
 
 \vfill\vfill
 \newpage
@@ -500,7 +505,7 @@ Thus, we can make $n$ candy with bags of 6, 9, 20, for any integer $n > 43$ as n
 %%% Your work goes here!
 \vspace{0.25 cm}
 
-\textit{Proof.} \\
+\textit{Proof by Strong Induction.} \\
 \addvspace{1 pt}
 WTS: $11$ is the largest integer $n$ such that it's impossible to buy exactly $n$ pieces of chocolate with bags of size $4, 6, 9, 20$. 
 \addvspace{3 pt}
